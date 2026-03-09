@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Profile Photo</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #6366f1;
+            margin-bottom: 1rem;
+        }
+        .upload-area {
+            border: 2px dashed #6366f1;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .upload-area:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: #8b5cf6;
+        }
+        .upload-area.dragover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: #8b5cf6;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .preview {
+            margin-top: 1rem;
+        }
+        .preview img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 50%;
+            border: 4px solid #6366f1;
+            object-fit: cover;
+        }
+        .btn {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+        .instructions {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📸 Upload Your Profile Photo</h1>
+        
+        <div class="instructions">
+            <strong>Instructions:</strong><br>
+            1. Click the area below or drag & drop your photo<br>
+            2. Choose a square photo for best results<br>
+            3. Recommended size: 280×280px<br>
+            4. After uploading, save the image as "profile.jpg"
+        </div>
+
+        <div class="upload-area" id="uploadArea">
+            <input type="file" id="fileInput" accept="image/*">
+            <div id="uploadText">
+                📁 Click to select or drag & drop your photo here
+            </div>
+        </div>
+
+        <div class="preview" id="preview" style="display: none;">
+            <h3>Preview:</h3>
+            <img id="previewImg" src="" alt="Profile preview">
+        </div>
+
+        <button class="btn" id="downloadBtn" style="display: none;">
+            💾 Download as profile.jpg
+        </button>
+
+        <div style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.7;">
+            After downloading, place the file in: assets/images/profile.jpg
+        </div>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const preview = document.getElementById('preview');
+        const previewImg = document.getElementById('previewImg');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const uploadText = document.getElementById('uploadText');
+        let currentFile = null;
+
+        uploadArea.addEventListener('click', () => fileInput.click());
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].type.startsWith('image/')) {
+                handleFile(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            currentFile = file;
+            const reader = new FileReader();
+            
+            reader.onload = (e) => {
+                previewImg.src = e.target.result;
+                preview.style.display = 'block';
+                downloadBtn.style.display = 'inline-block';
+                uploadText.textContent = `✅ ${file.name} selected`;
+            };
+            
+            reader.readAsDataURL(file);
+        }
+
+        downloadBtn.addEventListener('click', () => {
+            if (currentFile) {
+                const link = document.createElement('a');
+                link.download = 'profile.jpg';
+                link.href = previewImg.src;
+                link.click();
+            }
+        });
+    </script>
+</body>
+</html>

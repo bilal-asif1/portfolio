@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilal Asif - Full Stack Developer & AI Integration Specialist</title>
+  <meta name="description" content="Professional Full Stack Developer & AI Integration Specialist specializing in modern web technologies, AI solutions, and intelligent automation. Building scalable applications that transform businesses.">
+  <meta name="keywords" content="Full Stack Development, AI Integration, Web Development, JavaScript, React, Node.js, Machine Learning, Portfolio">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="./assets/images/profile/dp.jpeg" as="image">
+  <link rel="preload" href="./assets/css/style.css" as="style">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a href="#home" class="brand-link" aria-label="Bilal Asif - Home">
+          <span class="brand-text">BA</span>
+        </a>
+      </div>
+      
+      <nav class="navbar-nav" role="menubar">
+        <ul class="nav-list">
+          <li role="none"><a href="#home" class="nav-link" role="menuitem">Home</a></li>
+          <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
+          <li role="none"><a href="#portfolio" class="nav-link" role="menuitem">Portfolio</a></li>
+          <li role="none"><a href="#skills" class="nav-link" role="menuitem">Skills</a></li>
+          <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
+          <li role="none" class="navbar-cta">
+            <button class="btn btn-primary btn-cv" onclick="handleCVAction()" aria-label="Download CV">
+              <ion-icon name="document-text-outline" aria-hidden="true"></ion-icon>
+              <span>Download Resume</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home" role="region" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 id="hero-heading">
+              Hi, I'm <span class="highlight-text">Bilal Asif</span>
+            </h1>
+            <div class="hero-subtitle">
+              <span class="typing-text" data-typing="Full Stack Developer,AI Integration Specialist,Web Developer,Backend Engineer"></span>
+            </div>
+            <p class="hero-description">
+              I build scalable, high-performance web applications and intelligent solutions that help businesses thrive in the digital age.
+            </p>
+            <div class="hero-actions">
+              <a href="#portfolio" class="btn btn-primary">
+                <span>View My Work</span>
+                <ion-icon name="eye" aria-hidden="true"></ion-icon>
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                <span>Get In Touch</span>
+                <ion-icon name="mail" aria-hidden="true"></ion-icon>
+              </a>
+            </div>
+            
+            <!-- Hero Stats -->
+            <div class="hero-stats">
+              <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Projects Completed</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">2+</div>
+                <div class="stat-label">Years Experience</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Technologies</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hero-visual">
+            <div class="hero-image-container">
+              <div class="image-wrapper">
+                <img src="./assets/images/profile/dp.jpeg" 
+                     width="280" 
+                     height="280" 
+                     loading="eager" 
+                     alt="Bilal Asif - Full Stack Developer & AI Integration Specialist"
+                     class="hero-image">
+                <div class="image-overlay"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about" role="region" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">About Me</span>
+          <h2 id="about-heading" class="section-title">
+            Crafting Digital Solutions with 
+            <span class="highlight-text">Passion & Precision</span>
+          </h2>
+        </div>
+        
+        <div class="about-grid">
+          <div class="about-content">
+            <p class="about-text">
+              I'm a passionate Full Stack Developer specializing in modern web technologies and AI integration. My journey in software development has focused on building scalable, high-performance applications that leverage cutting-edge technologies to solve real-world problems.
+            </p>
+            <p class="about-text">
+              With expertise in frontend development, robust backend development, and seamless API integrations, I create intelligent applications that automate processes and enhance user experiences.
+            </p>
+            
+            <div class="highlights-grid">
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <ion-icon name="school"></ion-icon>
+                </div>
+                <div class="highlight-content">
+                  <h3>Education</h3>
+                  <p>BS Software Engineering</p>
+                  <span class="highlight-detail">UAF (University of Agriculture Faisalabad)</span>
+                </div>
+              </div>
+              
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <ion-icon name="briefcase"></ion-icon>
+                </div>
+                <div class="highlight-content">
+                  <h3>Experience</h3>
+                  <p>Full Stack Developer & AI Specialist</p>
+                  <span class="highlight-detail">2+ years of professional development</span>
+                </div>
+              </div>
+              
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <ion-icon name="location"></ion-icon>
+                </div>
+                <div class="highlight-content">
+                  <h3>Location</h3>
+                  <p>Faisalabad, Pakistan</p>
+                  <span class="highlight-detail">Available for remote work worldwide</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section portfolio" id="portfolio" role="region" aria-labelledby="portfolio-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Portfolio</span>
+          <h2 id="portfolio-heading" class="section-title">
+            Recent Projects That 
+            <span class="highlight-text">Showcase My Expertise</span>
+          </h2>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="portfolio-card">
+            <div class="card-image">
+              <img src="./assets/images/profile/placementt.png" alt="Placement Portal Profile" loading="lazy">
+              <div class="card-overlay">
+                <div class="card-links">
+                  <a href="https://github.com/bilal-asif1/placement-portal" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="View GitHub repository">
+                    <ion-icon name="logo-github"></ion-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Placement Portal</h3>
+              <p class="card-description">
+                Placement Portal is a full-stack web application designed to connect students, administrators, and companies for campus recruitment. It allows students to create profiles, apply for jobs, and track applications while administrators manage placements and companies post opportunities.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Tailwind CSS</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="card-image">
+              <img src="./assets/images/profile/gymm.png" alt="Gym Website" loading="lazy">
+              <div class="card-overlay">
+                <div class="card-links">
+                  <a href="https://github.com/bilal-asif1/GYM-web" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="View GitHub repository">
+                    <ion-icon name="logo-github"></ion-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Gym Website</h3>
+              <p class="card-description">
+                Modern fitness website with workout tracking, membership management, and class scheduling features for gym operations.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Vue.js</span>
+                <span class="tech-tag">Express</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Socket.io</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="card-image">
+              <img src="./assets/images/profile/vsd pic.png" alt="VSD Network" loading="lazy">
+              <div class="card-overlay">
+                <div class="card-links">
+                  <a href="https://github.com/bilal-asif1/vsd-nextjs-app" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="View GitHub repository">
+                    <ion-icon name="logo-github"></ion-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">VSD Network - The Currency for the Creator Economy</h3>
+              <p class="card-description">
+                Revolutionary platform for creators with cryptocurrency integration, content monetization, and decentralized social networking features.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">FastAPI</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills" role="region" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Skills</span>
+          <h2 id="skills-heading" class="section-title">
+            Technologies I 
+            <span class="highlight-text">Work With</span>
+          </h2>
+        </div>
+        
+        <div class="skills-grid">
+          <div class="skill-category">
+            <div class="category-header">
+              <ion-icon name="code-slash"></ion-icon>
+              <h3 class="category-title">Frontend Development</h3>
+            </div>
+            <div class="skill-list">
+              <div class="skill-item">
+                <span class="skill-name">JavaScript</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">React.js</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Vue.js</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">HTML/CSS</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 95%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-category">
+            <div class="category-header">
+              <ion-icon name="server"></ion-icon>
+              <h3 class="category-title">Backend Development</h3>
+            </div>
+            <div class="skill-list">
+              <div class="skill-item">
+                <span class="skill-name">Node.js</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Express.js</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Python</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 75%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">MongoDB</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 70%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-category">
+            <div class="category-header">
+              <ion-icon name="brain"></ion-icon>
+              <h3 class="category-title">AI & Integration</h3>
+            </div>
+            <div class="skill-list">
+              <div class="skill-item">
+                <span class="skill-name">AI Integration</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 70%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">TensorFlow</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 65%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">API Development</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Tailwind CSS</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact" role="region" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Contact</span>
+          <h2 id="contact-heading" class="section-title">
+            Let's 
+            <span class="highlight-text">Connect</span>
+          </h2>
+        </div>
+        
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-method">
+              <div class="method-icon">
+                <ion-icon name="mail"></ion-icon>
+              </div>
+              <div class="method-content">
+                <h3>Email</h3>
+                <a href="mailto:bilalasif921@gmail.com">bilalasif921@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="method-icon">
+                <ion-icon name="call"></ion-icon>
+              </div>
+              <div class="method-content">
+                <h3>Phone</h3>
+                <a href="tel:+923043500045">+92 304 3500045</a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="method-icon">
+                <ion-icon name="location"></ion-icon>
+              </div>
+              <div class="method-content">
+                <h3>Location</h3>
+                <span>Faisalabad, Pakistan</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-form">
+            <form id="contact-form" class="form">
+              <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" class="form-input" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-input" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" name="message" class="form-input" rows="5" required></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">
+                <span>Send Message</span>
+                <ion-icon name="send" aria-hidden="true"></ion-icon>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2024 Bilal Asif. All rights reserved.</p>
+        <p>Built with passion for modern web development and AI integration</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>
