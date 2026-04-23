@@ -238,11 +238,294 @@ function showNotification(message, type = 'info') {
 }
 
 /**
+ * Mobile Menu Toggle
+ */
+function toggleMobileMenu() {
+  const navbarList = document.querySelector('.navbar-list');
+  const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+  const navToggleBtn = document.querySelector('.nav-toggle-btn');
+  
+  if (navbarList && mobileMenuToggle) {
+    navbarList.classList.toggle('active');
+    mobileMenuToggle.classList.toggle('active');
+    
+    // Also toggle the main nav button if it exists
+    if (navToggleBtn) {
+      navToggleBtn.classList.toggle('active');
+      navToggleBtn.setAttribute('aria-expanded', navbarList.classList.contains('active'));
+    }
+    
+    // Close menu when clicking on a link
+    const navbarLinks = document.querySelectorAll('.navbar-link');
+    navbarLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navbarList.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
+        if (navToggleBtn) {
+          navToggleBtn.classList.remove('active');
+          navToggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  }
+}
+
+/**
+ * CV Download Handler
+ */
+function handleCVAction() {
+  // Create a temporary link element to download the CV
+  const link = document.createElement('a');
+  link.href = './assets/images/profile/CV.pdf';
+  link.download = 'CV.pdf';
+  link.style.display = 'none';
+  
+  // Add to DOM, click, and remove
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  // Show success notification
+  showNotification('CV download started! Check your downloads folder.', 'success');
+}
+
+/**
+ * Portfolio Navigation for Horizontal Scroll Container
+ */
+function initPortfolioNavigation() {
+  const portfolioGrid = document.getElementById('portfolioGrid');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  
+  if (!portfolioGrid || !prevBtn || !nextBtn) return;
+  
+  let currentSlide = 0;
+  const totalSlides = portfolioGrid.children.length;
+  
+  function goToSlide(slideIndex) {
+    // Ensure slide index is within bounds
+    slideIndex = Math.max(0, Math.min(slideIndex, totalSlides - 1));
+    
+    // Calculate scroll position for 85% width cards with gap-4 (1rem)
+    const cardWidth = portfolioGrid.children[0].offsetWidth;
+    const gap = 16; // 1rem gap-4
+    const scrollPosition = slideIndex * (cardWidth + gap);
+    
+    // Scroll to the slide with smooth behavior
+    portfolioGrid.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth'
+    });
+    
+    // Update current slide
+    currentSlide = slideIndex;
+    
+    // Update navigation buttons
+    updateNavButtons();
+  }
+  
+  function updateNavButtons() {
+    // Disable prev button if at start
+    prevBtn.disabled = currentSlide <= 0;
+    
+    // Disable next button if at end
+    nextBtn.disabled = currentSlide >= totalSlides - 1;
+  }
+  
+  function scrollPrev() {
+    goToSlide(currentSlide - 1);
+  }
+  
+  function scrollNext() {
+    goToSlide(currentSlide + 1);
+  }
+  
+  // Add event listeners for arrow navigation
+  prevBtn.addEventListener('click', scrollPrev);
+  nextBtn.addEventListener('click', scrollNext);
+  
+  // Handle scroll events to update current slide with snap alignment
+  let scrollTimeout;
+  portfolioGrid.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const cardWidth = portfolioGrid.children[0].offsetWidth;
+      const gap = 16; // 1rem gap-4
+      const scrollLeft = portfolioGrid.scrollLeft;
+      const newSlide = Math.round(scrollLeft / (cardWidth + gap));
+      
+      if (newSlide !== currentSlide) {
+        currentSlide = newSlide;
+        updateNavButtons();
+      }
+    }, 100);
+  });
+  
+  // Handle touch events for mobile swipe
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  portfolioGrid.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  
+  portfolioGrid.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - go to next
+        scrollNext();
+      } else {
+        // Swipe right - go to previous
+        scrollPrev();
+      }
+    }
+  }
+  
+  // Handle window resize to maintain proper alignment
+  window.addEventListener('resize', () => {
+    goToSlide(currentSlide);
+  });
+  
+  // Initialize navigation buttons
+  updateNavButtons();
+}
+
+/**
+ * Skills Slider Navigation
+ */
+function initSkillsNavigation() {
+  const skillsGrid = document.getElementById('skillsGrid');
+  const prevBtn = document.getElementById('skillsPrevBtn');
+  const nextBtn = document.getElementById('skillsNextBtn');
+  
+  if (!skillsGrid || !prevBtn || !nextBtn) return;
+  
+  let currentSlide = 0;
+  const totalSlides = skillsGrid.children.length;
+  
+  function goToSlide(slideIndex) {
+    // Ensure slide index is within bounds
+    slideIndex = Math.max(0, Math.min(slideIndex, totalSlides - 1));
+    
+    // Calculate scroll position for 280px width cards with gap-4 (1rem)
+    const cardWidth = skillsGrid.children[0].offsetWidth;
+    const gap = 16; // 1rem gap-4
+    const scrollPosition = slideIndex * (cardWidth + gap);
+    
+    // Scroll to the slide with smooth behavior
+    skillsGrid.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth'
+    });
+    
+    // Update current slide
+    currentSlide = slideIndex;
+    
+    // Update navigation buttons
+    updateNavButtons();
+  }
+  
+  function updateNavButtons() {
+    // Disable prev button if at start
+    prevBtn.disabled = currentSlide <= 0;
+    
+    // Disable next button if at end
+    nextBtn.disabled = currentSlide >= totalSlides - 1;
+  }
+  
+  function scrollPrev() {
+    goToSlide(currentSlide - 1);
+  }
+  
+  function scrollNext() {
+    goToSlide(currentSlide + 1);
+  }
+  
+  // Add event listeners for arrow navigation
+  prevBtn.addEventListener('click', scrollPrev);
+  nextBtn.addEventListener('click', scrollNext);
+  
+  // Handle scroll events to update current slide with snap alignment
+  let scrollTimeout;
+  skillsGrid.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const cardWidth = skillsGrid.children[0].offsetWidth;
+      const gap = 16; // 1rem gap-4
+      const scrollLeft = skillsGrid.scrollLeft;
+      const newSlide = Math.round(scrollLeft / (cardWidth + gap));
+      
+      if (newSlide !== currentSlide) {
+        currentSlide = newSlide;
+        updateNavButtons();
+      }
+    }, 100);
+  });
+  
+  // Handle touch events for mobile swipe
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  skillsGrid.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  
+  skillsGrid.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - go to next
+        scrollNext();
+      } else {
+        // Swipe right - go to previous
+        scrollPrev();
+      }
+    }
+  }
+  
+  // Handle window resize to maintain proper alignment
+  window.addEventListener('resize', () => {
+    goToSlide(currentSlide);
+  });
+  
+  // Initialize navigation buttons
+  updateNavButtons();
+}
+
+/**
  * Initialize Portfolio on DOMContentLoaded
  */
 document.addEventListener('DOMContentLoaded', function () {
   initTypingAnimation();
   initScrollAnimations();
   handleContactForm();
+  
+  // Add event listener for main nav toggle button
+  const navToggleBtn = document.querySelector('[data-nav-toggle-btn]');
+  if (navToggleBtn) {
+    navToggleBtn.addEventListener('click', toggleMobileMenu);
+  }
+  
+  // Initialize portfolio navigation
+  initPortfolioNavigation();
+  
+  // Initialize skills navigation
+  initSkillsNavigation();
+  
   console.log('Portfolio initialized successfully!');
 });

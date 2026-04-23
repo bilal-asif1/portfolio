@@ -17,6 +17,7 @@
   <meta name="author" content="Bilal Asif">
   <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -66,10 +67,10 @@
               <a href="#contact" class="navbar-link" data-nav-link role="menuitem">Contact</a>
             </li>
             <li role="none" class="navbar-cta">
-              <button class="btn btn-primary btn-cv" onclick="handleCVAction()" aria-label="Download CV">
+              <a href="./assets/images/profile/CV.pdf" download="Bilal_Asif_CV.pdf" class="btn btn-primary btn-cv hidden lg:inline-block" aria-label="Download CV">
                 <ion-icon name="document-text-outline" aria-hidden="true"></ion-icon>
                 <span>Download Resume</span>
-              </button>
+              </a>
             </li>
           </ul>
         </div>
@@ -138,14 +139,14 @@
                   <span>Let's Connect</span>
                   <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
                 </a>
-                <a href="#portfolio" class="btn btn-secondary">
-                  <span>View My Work</span>
-                  <ion-icon name="eye" aria-hidden="true"></ion-icon>
+                <a href="./assets/images/profile/CV.pdf" download="Bilal_Asif_CV.pdf" class="btn btn-secondary hidden lg:inline-block">
+                  <span>Download Resume</span>
+                  <ion-icon name="document-text-outline" aria-hidden="true"></ion-icon>
                 </a>
               </div>
             </div>
 
-            <div class="hero-visual">
+            <div class="hero-visual hidden lg:block">
               <div class="hero-image-container">
                 <div class="image-wrapper">
                   <img src="./assets/images/profile/dp.jpeg" 
@@ -266,7 +267,7 @@
         </div>
       </section>
 
-      <section class="section portfolio" id="portfolio" role="region" aria-labelledby="portfolio-heading">
+      <section id="portfolio" class="section portfolio-section">
         <div class="container">
           <div class="section-header">
             <span class="section-subtitle">Portfolio</span>
@@ -276,7 +277,16 @@
             </h2>
           </div>
 
-          <div class="portfolio-grid">
+          <div class="portfolio-nav">
+            <button class="portfolio-nav-btn prev" id="prevBtn" aria-label="Previous project">
+              <ion-icon name="chevron-back"></ion-icon>
+            </button>
+            <button class="portfolio-nav-btn next" id="nextBtn" aria-label="Next project">
+              <ion-icon name="chevron-forward"></ion-icon>
+            </button>
+          </div>
+
+          <div class="portfolio-grid" id="portfolioGrid">
             <article class="portfolio-card">
               <div class="card-image">
                 <img src="./assets/images/profile/placementt.png" alt="Placement Portal Profile" loading="lazy">
@@ -369,12 +379,19 @@
             </h2>
           </div>
 
-          <div class="skills-grid">
-            <div class="skill-category">
-              <h3 class="category-title">
-                <ion-icon name="code-slash"></ion-icon>
-                Frontend Development
-              </h3>
+          <div class="skills-slider-wrapper relative">
+            <!-- Left Button -->
+            <button class="skills-nav-btn skills-prev-btn" id="skillsPrevBtn" aria-label="Previous skills">
+              <ion-icon name="chevron-back"></ion-icon>
+            </button>
+
+            <!-- Skills Slider -->
+            <div class="skills-grid" id="skillsGrid">
+              <div class="skill-category">
+                <h3 class="category-title">
+                  <ion-icon name="code-slash"></ion-icon>
+                  Frontend Development
+                </h3>
               <div class="skill-items">
                 <div class="skill-item">
                   <div class="skill-info">
@@ -559,6 +576,11 @@
               </div>
             </div>
           </div>
+
+          <!-- Right Button -->
+          <button class="skills-nav-btn skills-next-btn" id="skillsNextBtn" aria-label="Next skills">
+            <ion-icon name="chevron-forward"></ion-icon>
+          </button>
         </div>
       </section>
 
